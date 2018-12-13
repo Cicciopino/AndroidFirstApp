@@ -6,10 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,OnCheckedChangeListener {
 
     private static final String TAG = "MainActivity";
     private static final int PASSWORD_LENGTH = 6;
@@ -19,13 +23,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button loginBtn;
     Button registerBtn;
+    Switch switchTheme;
+    LinearLayout layout;
     public static final String WELCOME ="WELCOME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
 
         emailET = findViewById(R.id.email_et);
@@ -39,6 +43,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         registerBtn.setOnClickListener(this);
 
         loginBtn.setOnClickListener(this);
+        switchTheme = findViewById(R.id.switch1);
+        switchTheme.setOnCheckedChangeListener(this
+        );
+
+        layout = findViewById(R.id.back);
+
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
 
     }
-
 
     private boolean isValidPassword(){
         String password = passwordET.getText().toString();
@@ -124,16 +133,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.login_btn){
-            /*
-            if(isValidPassword() && isValidEmail()){
-                showSuccessMessage();
-            }else if (isValidPassword() && !isValidEmail()) {
-                showErrorEmail();
-            }else if (!isValidPassword() && isValidEmail()) {
-                showErrorPassword();
-            }else {
-                showErrorMessage();
-            }*/
+
 
             if(!isValidEmail()){
                 showErrorMessage(getString(R.string.email_error));
@@ -158,4 +158,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked){
+           layout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        }else{
+            layout.setBackgroundColor(getResources().getColor(R.color.white));
+        }
+    }
 }
+

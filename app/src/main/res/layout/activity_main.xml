@@ -3,8 +3,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="8dp"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/back">
 
     <EditText
         android:layout_width="match_parent"
@@ -45,6 +45,18 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="right|bottom"
+        >
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"/>
 
+    </LinearLayout>
 
 </LinearLayout>
