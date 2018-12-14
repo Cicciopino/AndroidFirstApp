@@ -9,6 +9,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:drawableStart="@drawable/baseline_email_black_18"
+        android:drawablePadding="10dp"
         android:id="@+id/email_et"
         android:inputType="textEmailAddress"
         android:hint="@string/hint_email"
@@ -17,6 +19,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:drawableStart="@drawable/baseline_vpn_key_black_18"
+        android:drawablePadding="10dp"
         android:id="@+id/password_et"
         android:inputType="textPassword"
         android:hint="@string/hint_password"/>
@@ -49,10 +53,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="right|bottom"
-        >
+        android:gravity="end|bottom">
         <Switch
             android:id="@+id/switch1"
+            android:text="@string/dark_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"/>

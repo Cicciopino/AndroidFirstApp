@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 public class WelcomeActivity extends AppCompatActivity implements OnClickListener {
 
-    String mail;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +35,10 @@ public class WelcomeActivity extends AppCompatActivity implements OnClickListene
         String mail= getIntent().getStringExtra(MainActivity.WELCOME);
         String[] to = {mail, ""};
         intent.putExtra(Intent.EXTRA_EMAIL, to);
-        intent.putExtra(Intent.EXTRA_SUBJECT, "DAVIDE GAY");
-        intent.putExtra(Intent.EXTRA_TEXT, "DAVIDE SUPER GAY");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "OGGETTO");
+        intent.putExtra(Intent.EXTRA_TEXT, "TESTO_EMAIL");
         intent.setType("message/rfc822");
-        Intent chooser = Intent.createChooser(intent, "INVIA EMAIL");
+        Intent chooser = Intent.createChooser(intent, "INVIA_EMAIL");
         startActivity(chooser);
     }
 }

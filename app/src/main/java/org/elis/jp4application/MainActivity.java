@@ -1,6 +1,8 @@
 package org.elis.jp4application;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -23,8 +25,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button loginBtn;
     Button registerBtn;
+
     Switch switchTheme;
+
     LinearLayout layout;
+
+    SharedPreferences sharePref;
+    SharedPreferences.Editor editor;
+
     public static final String WELCOME ="WELCOME";
 
     @Override
@@ -43,11 +51,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         registerBtn.setOnClickListener(this);
 
         loginBtn.setOnClickListener(this);
+
         switchTheme = findViewById(R.id.switch1);
-        switchTheme.setOnCheckedChangeListener(this
-        );
+        switchTheme.setOnCheckedChangeListener(this);
 
         layout = findViewById(R.id.back);
+
+        sharePref = getPreferences(Context.MODE_PRIVATE);
+        editor = sharePref.edit();
+        switchTheme.setChecked(getColorValueFromMemory());
 
 
 
@@ -59,12 +71,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
             }
         });
-
         Log.i(TAG, "activity created");
 
     }
-
-
 
     private boolean isValidEmail(){
         String email = emailET.getText().toString();
@@ -113,8 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onPause() {
         super.onPause();
         Log.i(TAG, "activity PAUSED");
-
-    }
+        }
 
     @Override
     protected void onStop() {
@@ -161,11 +169,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked){
-           layout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-        }else{
-            layout.setBackgroundColor(getResources().getColor(R.color.white));
-        }
+    changeColor(isChecked);
+    }
+    private void changeColor(boolean isChecked){
+        layout.setBackgroundColor(getResources().getColor(isChecked ? R.color.colorPrimaryDark : R.color.white));
+        setColorValueInMemory(isChecked);
+    }
+    private void setColorValueInMemory(boolean value){
+        editor.putBoolean("Background_color",value);
+        editor.commit();
+    }
+    private boolean getColorValueFromMemory(){
+      return sharePref.getBoolean("BGcolor",false);
     }
 }
 

@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:id="@+id/email_et"
         android:hint="@string/hint_email"
+        android:drawableStart="@drawable/baseline_email_black_18"
+        android:drawablePadding="10dp"
         android:inputType="textEmailAddress"
         android:layout_height="wrap_content" />
 
@@ -16,6 +18,8 @@
         android:layout_width="match_parent"
         android:inputType="textPassword"
         android:id="@+id/password_et"
+        android:drawableStart="@drawable/baseline_vpn_key_black_18"
+        android:drawablePadding="10dp"
         android:hint="@string/hint_password"
         android:layout_height="wrap_content" />
 
@@ -24,6 +28,8 @@
         android:inputType="phone"
         android:hint="@string/hint_phone"
         android:id="@+id/phone_et"
+        android:drawableStart="@drawable/baseline_phone_black_18"
+        android:drawablePadding="10dp"
         android:layout_height="wrap_content" />
 
     <LinearLayout
