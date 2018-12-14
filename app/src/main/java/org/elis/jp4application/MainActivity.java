@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sharePref = getPreferences(Context.MODE_PRIVATE);
         editor = sharePref.edit();
         switchTheme.setChecked(getColorValueFromMemory());
+        changeColor(getColorValueFromMemory());
 
 
 
@@ -176,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setColorValueInMemory(isChecked);
     }
     private void setColorValueInMemory(boolean value){
-        editor.putBoolean("Background_color",value);
+        editor.putBoolean("BGcolor",value);
         editor.commit();
     }
     private boolean getColorValueFromMemory(){

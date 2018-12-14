@@ -12,7 +12,7 @@
         android:text="@string/welcome"
         android:id="@+id/welcome_tv"
         android:onClick="onClick"
-        android:textSize="30dp"/>
+        android:textSize="20dp"/>
 
 
 </LinearLayout>
