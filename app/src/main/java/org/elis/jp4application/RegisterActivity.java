@@ -116,8 +116,6 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     private void createAccount(String email, String password, String phoneNumber) {
-
-        // TODO cose
     }
 
 

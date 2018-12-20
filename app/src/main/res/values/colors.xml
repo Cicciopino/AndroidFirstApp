@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="buttonPrimary">#1976d2</color>
     <color name="white">#ffffff</color>
+    <color name="bg">#FFECA650</color>
+    <color name="bgOggetti">#f77d40</color>
 </resources>
